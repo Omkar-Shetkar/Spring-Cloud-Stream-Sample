@@ -20,7 +20,7 @@ import java.util.function.Supplier;
 public class LoggingConsumerApplication {
 
     public static void main(String[] args) {
-        SpringApplication.run(LoggingConsumerApplication.class, args);
+        SpringApplication.run(LoggingConsumerApplication.class, "--spring.cloud.stream.source=toStream");
     }
 
     @Autowired
@@ -30,7 +30,7 @@ public class LoggingConsumerApplication {
     @ResponseStatus(HttpStatus.ACCEPTED)
     public void delegateToSupplier(@RequestBody Person person) {
         System.out.println("Sending " + person);
-        streamBridge.send("supplier", person);
+        streamBridge.send("toStream-out-0", person);
     }
 
     @Bean
