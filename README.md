@@ -10,4 +10,5 @@ bin/kafka-server-start.sh config/server.properties
 #### Start Console Producer
  ./bin/kafka-console-producer.sh --broker-list localhost:9092 --topic log-in-0
 
-
+#### List Topics
+bin/kafka-topics.sh --list --bootstrap-server localhost:9092
